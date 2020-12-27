@@ -16,21 +16,21 @@
 	<section class="container grey-text">
 		<form class="white">
 			<div class="center ftext">
-				<a href="./markattendance.php" class="btn brand z-depth-0">Maintain User Profile</a>
+				<a href="./userprofiles.php" class="btn brand z-depth-0">Maintain User Profile</a>
 			</div>
 		</form>
 	</section>
 	<section class="container grey-text">
 		<form class="white">
 			<div class="center ftext">
-				<a href="./markattendance.php" class="btn brand z-depth-0">Manage Attendance Reports</a>
+				<a href="./managecourse.php" class="btn brand z-depth-0">Manage Courses</a>
 			</div>
 		</form>
 	</section>
 	<section class="container grey-text">
 		<form class="white">
 			<div class="center ftext">
-				<a href="./viewreport.php" class="btn brand z-depth-0">Manage Resources</a>
+				<a href="./manageresource.php" class="btn brand z-depth-0">Manage Resources</a>
 			</div>
 		</form>
 	</section>

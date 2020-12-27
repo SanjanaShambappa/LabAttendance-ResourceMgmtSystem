@@ -53,8 +53,7 @@
 			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
 	
 			//query the database for users
-			$result = mysqli_query($conn, "select * from users where email = '$email' and password = '$password' 
-																		and designation = '$designation'")
+			$result = mysqli_query($conn, "select * from users where email = '$email' and password = md5('$password') and designation = '$designation'")
 						or die("Failed to query database");
 
 			$_SESSION['varname'] = $email;

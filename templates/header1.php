@@ -33,10 +33,9 @@
     		margin-right: -70px;
     	}
     	#errormessage{
-    		font-size: 16px;
+    		font-size: 14px;
     		color: #D2691E !important;
     		font-style: italic;
-    		font-weight: bold;
     	}
     	form{
     		max-width: 460px;

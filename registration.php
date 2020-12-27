@@ -53,11 +53,16 @@
 		}
 
 		if($em_name == "" && $em_email =="" && $em_password == "" && $em_designation==""){
-				if($designation == "Faculty")
-					header('Location: ./Faculty/mainpage.php');
-				else if($designation == "Student")
-					header('Location: ./Student/mainpage.php');
-		} else {
+
+			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
+			$result = mysqli_query($conn, "insert into users values ('NULL','$email',
+					md5('$password'),'$designation')");
+			if($result == True){
+				echo '<script>
+				alert("Successfully Registered!");
+				window.location.href="./login.php";
+				</script>';
+			}
 		}
 
 	} //end of post check

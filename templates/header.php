@@ -59,7 +59,7 @@
 				</ul> -->
 				<ul id = "dropdown" class = "dropdown-content right">  
 			         <li><a href = "./login.php">Login</a></li>  
-			         <li><a href = "./registration.php">Register</a></li>   
+			         <li><a href = "./verifyemail.php">Register</a></li>   
 			         <li class = "divider"></li>  
 			         <li><a href = "./updateresource.php">Update Resource</a></li>  
 			    </ul>  

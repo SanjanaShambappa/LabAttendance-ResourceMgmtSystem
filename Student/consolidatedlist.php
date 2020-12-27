@@ -1,0 +1,20 @@
+<?php
+	//echo 'Hello PHP Web Dev!!';
+	//echo 'Hello! DBMS Project';
+?>
+
+<!DOCTYPE html>
+<html>
+	
+	<?php include('../templates/header1.php') ?>
+				<ul id="nav-mobile" class="right hide-on-small-and-down">
+					<li id="back"><a href="./viewsummary.php" class="btn brand z-depth-0">Click to Return</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	<h4 class="center grey-text">Consolidated Summary</h4>
+	
+	<?php include('../templates/footer.php') ?>
+
+</html>
