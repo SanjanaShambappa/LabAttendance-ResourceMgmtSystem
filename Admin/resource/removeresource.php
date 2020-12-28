@@ -23,7 +23,10 @@
 	
 			$result = mysqli_query($conn, "DELETE from resource WHERE Resource_ID = '$resource_ID'");
 			if($result == True){
-				echo '<script>alert("Deletion from table successful")</script>';
+				echo '<script>
+					alert("Deletion from table successful");
+					window.location.href="../manageresource.php";
+					</script>';
 			}
 		}
 	

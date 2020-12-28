@@ -75,7 +75,15 @@
 
 <!DOCTYPE html>
 <html>
-	
+	<style>
+	body {
+	  background-image: url('./bg1.jpg');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+  	  background-size: 100% 100%;
+	}
+	</style>
+
 	<script>
 		function myFunction() {
 		  var x = document.getElementById("myInput");

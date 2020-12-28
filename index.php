@@ -5,14 +5,14 @@
 
 <!DOCTYPE html>
 <html>
-	<!-- <style>
+	<style>
 	body {
-	  background-image: url('./BG.jpg');
+	  background-image: url('./bg1.jpg');
 	  background-repeat: no-repeat;
 	  background-attachment: fixed;
   	  background-size: 100% 100%;
 	}
-	</style> -->
+	</style>
 	<?php include('templates/header.php') ?>
 	<?php include('templates/footer.php') ?>
 

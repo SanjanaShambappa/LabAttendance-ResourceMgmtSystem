@@ -37,7 +37,10 @@
 	
 			$result = mysqli_query($conn, "DELETE from course WHERE Course_ID ='$courseID' and Name_of_Dept = '$dept'");
 			if($result == True){
-				echo '<script>alert("Deletion from table successful")</script>';
+				echo '<script>
+					alert("Deletion from table successful");
+					window.location.href="../managecourse.php";
+					</script>';
 			}
 		}
 	

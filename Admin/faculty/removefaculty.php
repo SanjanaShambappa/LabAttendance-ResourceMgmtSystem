@@ -33,7 +33,10 @@
 			$result = mysqli_query($conn, "DELETE from faculty WHERE Email = '$email' and Name_of_Dept = '$department'");
 			if($result == True){
 				//echo $Faculty_ID,$email,$fname,$lname,$department,$phonenumber;
-				echo '<script>alert("Deletion from table successful")</script>';
+				echo '<script>
+					alert("Deletion from table successful");
+					window.location.href="../userprofiles.php";
+					</script>';
 			}
 		}
 	}

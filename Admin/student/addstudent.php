@@ -96,7 +96,10 @@
 					'$fname','$lname','$dateofbirth','$semester','$phonenumber')");
 			if($result == True){
 				//echo $Faculty_ID,$email,$fname,$lname,$department,$phonenumber;
-				echo '<script>alert("Insertion into table successful")</script>';
+				echo '<script>
+					alert("Insertion into table successful");
+					window.location.href="../userprofiles.php";
+					</script>';
 			}
 		}
 	

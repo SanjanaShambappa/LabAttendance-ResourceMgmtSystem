@@ -25,7 +25,10 @@
 			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
 			$result = mysqli_query($conn, "DELETE from student WHERE USN = '$USN' ");
 			if($result == True){
-				echo '<script>alert("Deletion from table successful")</script>';
+				echo '<script>
+					alert("Deletion from table successful");
+					window.location.href="../userprofiles.php";
+					</script>';
 			}
 		}
 	}

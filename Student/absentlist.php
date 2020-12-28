@@ -69,6 +69,7 @@
 			    echo '<td class="table">Student USN</td>';
 			    echo '<td class="table">Course ID</td>';
 			    echo '<td class="table">Time Stamp</td>';
+			    echo '<td class="table">Status</td>';
 			    echo "</tr>";
 			    $i = 0;
 			    while($i < $n){
@@ -91,6 +92,11 @@
 			    	echo '<td style="border: 2px solid darkgray">';
 			    	echo '<span class="ftext" style="color:gray">';
 			    	echo $ts[$i];
+			    	echo '</span>';
+			    	echo '</td>';
+			    	echo '<td style="border: 2px solid darkgray">';
+			    	echo '<span class="ftext" style="color:gray">';
+			    	echo "Absent";
 			    	echo '</span>';
 			    	echo '</td>';
 			    	echo '</tr>';

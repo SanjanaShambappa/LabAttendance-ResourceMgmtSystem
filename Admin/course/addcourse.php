@@ -57,7 +57,10 @@
 	
 			$result = mysqli_query($conn, "insert into course values ('$courseID','$credits','$dept','$coursedesc')");
 			if($result == True){
-				echo '<script>alert("Insertion into table successful")</script>';
+				echo '<script>
+					alert("Insertion into table successful");
+					window.location.href="../managecourse.php";
+					</script>';
 			}
 		}
 	

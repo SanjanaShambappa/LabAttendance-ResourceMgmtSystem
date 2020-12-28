@@ -34,6 +34,13 @@
 			</div>
 		</form>
 	</section>
+	<section class="container grey-text">
+		<form class="white">
+			<div class="center ftext">
+				<a href="./generatereport.php" class="btn brand z-depth-0">Generate Report</a>
+			</div>
+		</form>
+	</section>
 	<?php include('../templates/footer.php') ?>
 
 </html>

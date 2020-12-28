@@ -66,7 +66,10 @@
 
 			}
 			if($i == $n){
-				echo '<script>alert("Insertion into table successful")</script>';
+				echo '<script>
+					alert("Insertion into table successful");
+					window.location.href="./mainpage.php";
+					</script>';
 			}
 			else{
 				echo '<script>alert("Unexpected Error!!")</script>';

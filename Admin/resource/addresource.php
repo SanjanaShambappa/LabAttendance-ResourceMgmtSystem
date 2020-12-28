@@ -36,7 +36,10 @@
 	
 			$result = mysqli_query($conn, "insert into resource values ('$resource_ID','$resource_type')");
 			if($result == True){
-				echo '<script>alert("Insertion into table successful")</script>';
+				echo '<script>
+					alert("Insertion into table successful");
+					window.location.href="../manageresource.php";
+					</script>';
 			}
 		}
 	
