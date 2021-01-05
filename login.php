@@ -100,7 +100,6 @@
 	<section class="container grey-text">
 		<h4 class="center">Enter Login Details</h4>
 		<form class="white" action="login.php" method="POST">
-
 			<label class="ftext">Your Email:</label>
 			<input type="text" name="email" value="<?php echo $email ?>">
 			<div class="right" id="errormessage">
@@ -108,7 +107,6 @@
 					echo $em_email;
 				?>
 			</div>
-
 			<label class="ftext">Your Password:</label>
 			<input type="password" name="password" id="myInput" value="<?php echo $password ?>">
 			<br>
@@ -121,7 +119,6 @@
 					echo $em_password;
 				?>
 			</div>
-
 			<p class="ftext">Your Designation:</p>
 			  <input type="radio" id="Admin" name="Designation" value="Admin">
 			  <label for="Admin">Admin</label><br>
@@ -129,22 +126,17 @@
 			  <label for="Faculty">Faculty</label><br>
 			  <input type="radio" id="Student" name="Designation" value="Student">
 			  <label for="Student">Student</label>
-
 			 <div class="right" id="errormessage">
 				<?php
 					echo $em_designation;
 				?>
 			</div>
-
 			<br>
-			<br>
-
 			<div class="center">
 				<span class="ftext1">
 					<input type="submit" name="submit" value="login" class="btn brand z-depth-0">
 				</span>
 			</div>
-
 		</form>
 	</section>
 

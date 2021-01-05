@@ -65,18 +65,6 @@
 
 		      var view = new google.visualization.DataView(data);
 		      view.setColumns([0,1]);
-		                      //  { calc: "stringify",
-		                      //    sourceColumn: 0,
-		                      //    type: "string",
-		                      //    role: "annotation" 
-		                     	// },
-		                      //  1, 
-		                      //  { calc: "stringify",
-		                      //    sourceColumn: 1,
-		                      //    type: "string",
-		                      //    role: "annotation"
-		                      //  }]);
-
 		      var options = {
 		        title: "Attendance Percentage based on Course",
 		        width: 500,

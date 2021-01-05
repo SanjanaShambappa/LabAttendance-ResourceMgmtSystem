@@ -55,15 +55,6 @@
 		    google.charts.load("current", {packages:['corechart']});
 		    google.charts.setOnLoadCallback(drawChart);
 
-		 //    $r1 = ['DATE', 'Number of Students Present'];
-			// $r2 = ['07-12-2020',17];
-			// $r3 = ['08-12-2020',15];
-			// $r4 = ['14-12-2020',14];
-			// $r5 = ['15-12-2020',16];
-			// $r6 = ['21-12-2020',13];
-			// $r7 = ['22-12-2020',16];
-
-
 		    function drawChart() {
 		      var data = google.visualization.arrayToDataTable([
 		  		['DATE', 'Number of Students Present'],
@@ -77,17 +68,6 @@
 
 		      var view = new google.visualization.DataView(data);
 		      view.setColumns([0,1]);
-		                      //  { calc: "stringify",
-		                      //    sourceColumn: 0,
-		                      //    type: "string",
-		                      //    role: "annotation" 
-		                     	// },
-		                      //  1, 
-		                      //  { calc: "stringify",
-		                      //    sourceColumn: 1,
-		                      //    type: "string",
-		                      //    role: "annotation"
-		                      //  }]);
 
 		      var options = {
 		        title: "Number of Students Present based on Date",

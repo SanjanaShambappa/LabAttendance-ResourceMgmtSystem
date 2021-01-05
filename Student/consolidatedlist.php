@@ -39,13 +39,20 @@
 		$Log[$i] = $i+1;
 		$m_arr[$i] = $m;
 		$n_arr[$i] = $n;
-		$p_arr[$i] = ($n/$m)*100;
+		if($m != 0)
+			$p_arr[$i] = ($n/$m)*100;
+		else
+			$p_arr[$i] = 0;
 		if($p_arr[$i] > 85)
 			$status_arr[$i] = "Good";
 		else if($p_arr[$i] == 85)
 			$status_arr[$i] = "Border";
-		else
-			$status_arr[$i] = "Shortage";
+		else {
+			if($m != 0)
+				$status_arr[$i] = "Shortage";
+			else
+				$status_arr[$i] = "NULL";
+		}
 		// echo $i,$status_arr[$i];
 		$i++;
 	}
@@ -121,8 +128,10 @@
 			    		echo '<span style="color:green">';
 			    	elseif($status_arr[$i] == "Border")
 			    		echo '<span style="color:yellow">';
-			    	else
+			    	elseif($status_arr[$i] == "Shortage")
 			    		echo '<span style="color:red">';
+			    	else
+			    		echo '<span style="color:blue">';
 			    	echo $status_arr[$i];
 			    	echo '</span>';
 			    	echo '</span>';
