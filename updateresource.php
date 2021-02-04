@@ -5,11 +5,36 @@
 	// 	echo $_GET['password'];
 	// }
 
-	$em_usn = "";
-	$em_resourceid = "";
+	session_start();
+	$department = $_SESSION['department'];
+	// echo $department;
 
-	$usn = $resourceid = "";
-	
+	$em_usn = "";
+	$em_resourcetype = "";
+	$em_checkbox = "";
+
+
+	$usn =  "";
+	$resourcetype = "";
+	$checkbox = "";
+
+	$type_array = [];
+
+	$conn = mysqli_connect("localhost", "root", "","dbmsproject");
+	$result = mysqli_query($conn, "select * from resourcerecord where Name_of_Dept = '$department'")
+						or die("Failed to query database");
+
+	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+		$temp = $row['Type_of_Resource'];
+		// echo $temp;
+		array_push($type_array,$temp);
+	}
+
+	// echo $type_array;
+
+	// foreach($type_array as $type)
+	// 	echo $type;
+
 	if(isset($_POST['submit'])){
 		// echo htmlspecialchars($_POST['email']);
 		// echo htmlspecialchars($_POST['password']);
@@ -25,32 +50,58 @@
 			}
 		}
 
-		//check email
-		if(empty($_POST['resourceid'])){
-			$em_resourceid = 'A resourceid is required <br/>';
-		} else {
-			$resourceid = $_POST['resourceid'];
-			//validating rid
-			if(!preg_match('/[a-zA-Z0-9\s]+$/', $resourceid)){
-				$em_resourceid = 'Resourceid must be alphanumeric only';
+		if(empty($_POST['resourcetype'])){
+			$em_resourcetype = 'A Resource Type has to be filled <br />';
+		} else{
+			$resourcetype = $_POST['resourcetype'];
+			if(!in_array($resourcetype, $type_array)){
+				$em_resourcetype = "Enter a type from the Resource List";
 			}
 		}
 
-		if($em_usn == "" && $em_resourceid == ""){
-			// echo $usn,$resourceid;
-			$ts = date("Y-m-d h:i:s");
+		if(empty($_POST['checkbox'])){
+			$em_checkbox = "Select an Option"; 
+		} else {
+			$checkbox = $_POST['checkbox'];
+		}
+
+		if($em_usn == "" && $em_resourcetype == ""){
+			// echo $usn,$resourcetype, $checkbox;
 			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
 			$result1 = mysqli_query($conn, "select * from student where USN = '$usn'")
 						or die("Failed to query database");
 			$m = mysqli_num_rows($result1);
 			if($m != 0){
-				$result = mysqli_query($conn, "insert into resourceutilization values ('NULL','$usn',
-					'$resourceid','$ts')");
-				if($result == True){
-					echo '<script>
-					alert("Successfully Updated Resource!");
-					window.location.href="./index.php";
-					</script>';
+				if($checkbox == "Borrowed"){
+					$ts = date('d-m-y h:i:s');
+					$result = mysqli_query($conn, "insert into resourceutilization values ('NULL','$usn',
+					'$resourcetype','YES', '$ts', 'NULL', 'NULL')");
+					if($result == True){
+						echo '<script>
+						alert("Successfully Updated Resource!");
+						window.location.href="./updateresource.php";
+						</script>';
+					}
+				} elseif ($checkbox == "Returned"){
+					$result1 = mysqli_query($conn, "select * from resourceutilization where USN = '$usn' and 
+						Type_of_Resource = '$resourcetype' and Borrowed = 'YES'");
+					$number = mysqli_num_rows($result1);
+					if($number != 0){
+						$ts = date('d-m-y h:i:s');
+						$result = mysqli_query($conn, "update resourceutilization set Returned = 'YES',Returned_TS = '$ts' 
+						where USN = '$usn' and Type_of_Resource = '$resourcetype'");
+						if($result == True){
+							echo '<script>
+							alert("Successfully Updated Resource!");
+							window.location.href="./updateresource.php";
+							</script>';
+						}
+					} else {
+						echo '<script>
+								alert("No Resource under this USN has been borrowed!");
+								window.location.href="./updateresource.php";
+								</script>';
+								}
 				}
 			}
 			else{
@@ -74,29 +125,48 @@
 	  background-attachment: fixed;
   	  background-size: 100% 100%;
 	}
+	#section-right{
+		float: right;
+	}
+	#section-left{
+		margin-left: 100px;
+		margin-top: 35px;
+	}
 	</style>
 	
 	<?php include('templates/header.php') ?>
 
-	<section class="container grey-text">
-		<h4 class="center">Enter Resource Details</h4>
+
+	<h4 class="center grey-text">Enter Resource Details</h4>
+
+	<section class="container grey-text" id="section-right">
 		<form class="white" action="updateresource.php" method="POST">
-			<label class="ftext">USN:</label>
-			<input type="text" name="usn" value="<?php echo $usn?>">
+
+			<label  style="font-size: 18px">USN:</label>
+			<input type="text" name="usn">
 			<div class="right" id="errormessage">
 				<?php
 					echo $em_usn;
 				?>
 			</div>
-			<label class="ftext">Resource ID:</label>
-			<input type="text" name="resourceid" value="<?php echo $resourceid?>">
+			<label  style="font-size: 18px">Type of Resource:</label>
+			<input type="text" name="resourcetype">
 			<div class="right" id="errormessage">
 				<?php
-					echo $em_resourceid;
+					echo $em_resourcetype;
 				?>
-			</div>
-			<!-- <label class="ftext">Your Password:</label>
-			<input type="text" name="password"> -->
+			</div>  
+			<p class="ftext">Your Choice of Action:</p>
+			  <input type="radio" id="Borrowed" name="checkbox" value="Borrowed">
+			  <label for="Borrowed">Borrow</label><br>
+			  <input type="radio" id="Returned" name="checkbox" value="Returned">
+			  <label for="Returned">Return</label><br>
+			 <div class="right" id="errormessage">
+				<?php
+					echo $em_checkbox;
+				?>
+			</div>   		
+				
 			<div class="center" style="margin-top: 25px">
 				<span class="ftext1">
 					<input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
@@ -105,6 +175,15 @@
 		</form>
 	</section>
 
-	<?php include('templates/footer.php') ?>
+	<section class=" grey-text white" id="section-left" style="width:450px; font-size:18px">
+		<p class="ftext center" style="font-size:18px">List of Resources Available:</p>
+			  <?php
+					$i = 1;
+						foreach($type_array as $item){
+							echo "<option value='strtolower($item)'>$i) $item</option>";
+							$i++;
+						}
+				?>
+	</section>
 
 </html>

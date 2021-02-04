@@ -1,20 +1,20 @@
 <?php
 
-	$resource_ID = "";
+	$department = "";
 	$resource_type = "";
 
-	$em_rid = $em_rtype = "";
+	$em_dept = "";
+	$em_rtype = "";
 
 	$f = 1;
 
 	
 	if(isset($_POST['submit'])){
 
-		if(empty($_POST['rid'])){
-			$em_rid = 'Enter Resource_ID';
-			$f = 0;
-		} else{
-			$resource_ID = $_POST['rid'];
+		if(empty($_POST['Department'])){
+			$em_dept = "Choose a Department"; 
+		} else {
+			$department = $_POST['Department'];
 		}
 
 		if(empty($_POST['rtype'])){
@@ -34,11 +34,11 @@
 			// echo $resource_ID,$resource_type;
 			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
 	
-			$result = mysqli_query($conn, "insert into resource values ('$resource_ID','$resource_type')");
+			$result = mysqli_query($conn, "insert into resourcerecord values ('$department','$resource_type')");
 			if($result == True){
 				echo '<script>
 					alert("Insertion into table successful");
-					window.location.href="../manageresource.php";
+					window.location.href="./addresource.php";
 					</script>';
 			}
 		}
@@ -61,13 +61,30 @@
 	<section class="container grey-text">
 		<form class="white" action="addresource.php" method="POST">
 
-			<label style="font-weight: bold;" class="ftext">Resource_ID:</label>
-			<input type="text" name="rid" value="<?php echo $resource_ID?>">
+			<p class="ftext" style="font-weight: bold">Choose Department:</p>
+			  <input type="radio" id="Computer Science & Engineering" name="Department" value="Computer Science & Engineering">
+			  <label for="Computer Science & Engineering">Computer Science & Engineering</label><br>
+
+			  <input type="radio" id="Electronics & Communication Engineering" name="Department" value="Electronics & Communication Engineering">
+			  <label for="Electronics & Communication Engineering">Electronics & Communication Engineering</label>
+
+			  <input type="radio" id="Electrical & Electronics Engineering" name="Department" value="Electrical & Electronics Engineering">
+			  <label for="Electrical & Electronics Engineering">Electrical & Electronics Engineering</label>
+
+			  <input type="radio" id="Information Science & Engineering" name="Department" value="Information Science & Engineering">
+			  <label for="Information Science & Engineering">Information Science & Engineering</label><br>
+			  
+			  <input type="radio" id="Electronics & Telecommunication Engineering" name="Department" value="Electronics & Telecommunication Engineering">
+			  <label for="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</label><br>
+			<br>
+
 			<div class="right" id="errormessage">
 				<?php
-					echo $em_rid;
+					echo $em_dept;
 				?>
-			</div>
+			</div> 
+
+			<br>
 
 			<label style="font-weight: bold;" class="ftext">Resource Type:</label>
 			<input type="text" name="rtype" value="<?php echo $resource_type ?>">

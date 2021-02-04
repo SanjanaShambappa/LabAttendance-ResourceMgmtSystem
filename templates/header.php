@@ -61,7 +61,7 @@
 			         <li><a href = "./login.php">Login</a></li>  
 			         <li><a href = "./verifyemail.php">Register</a></li>   
 			         <li class = "divider"></li>  
-			         <li><a href = "./updateresource.php">Update Resource</a></li>  
+			         <li><a href = "./adminlogin.php">Update Resource</a></li>  
 			    </ul>  
 			    <a id = "dropdown" class = "btn dropdown-button right" href = "#" data-activates = "dropdown">Select Option  
          		<i class = "mdi-navigation-arrow-drop-down right"></i></a>

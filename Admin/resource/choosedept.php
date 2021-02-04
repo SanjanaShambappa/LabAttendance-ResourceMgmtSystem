@@ -1,13 +1,14 @@
 <?php
-
-	$department = "";
-	$resource_type = "";
+		
+	// if(isset($_GET['submit'])){
+	// 	echo $_GET['email'];
+	// 	echo $_GET['password'];
+	// }
+	session_start();
 
 	$em_dept = "";
-	$em_rtype = "";
 
-	$f = 1;
-
+	$department = "";
 	
 	if(isset($_POST['submit'])){
 
@@ -17,50 +18,39 @@
 			$department = $_POST['Department'];
 		}
 
-		if(empty($_POST['rtype'])){
-			$em_rtype = 'Enter Resource Type';
-			$f = 0;
-		} else{
-			$resource_type = $_POST['rtype'];
-			//validating name
-			if(!preg_match('/[a-zA-Z\s]+$/', $resource_type)){
-				$em_rtype = 'Name must be letters and spaces only';
-				$f = 0;
-			}
-		}
+		if($em_dept == ""){
 
-		if($f == 1){
+			$_SESSION['department'] = $department;
 
-			// echo $resource_ID,$resource_type;
-			$conn = mysqli_connect("localhost", "root", "","dbmsproject");
-	
-			$result = mysqli_query($conn, "DELETE from resourcerecord where Name_of_Dept = '$department' and Type_of_Resource = 'resource_type'");
-			if($result == True){
-				echo '<script>
-					alert("deletion from table successful");
-					window.location.href="./removeresource.php";
-					</script>';
-			}
+			echo $department;
+
+			header('Location: ./resourcelist.php');
+
 		}
-	}
-	
+	} //end of post check
+
 ?>
 
 <!DOCTYPE html>
 <html>
+
+	<style>
+	body {
+	  background-image: url('./bg1.jpg');
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+  	  background-size: 100% 100%;
+	}
+	</style>
 	
-	<?php include('../../templates/header1.php') ?>
-				<ul id="nav-mobile" class="right hide-on-small-and-down">
-					<li id="back"><a href="../manageresource.php" class="btn brand z-depth-0">Click to Return</a></li>
-				</ul>
-			</div>
-		</nav>
+	<?php include('../../templates/header.php') ?>
 
-	<h4 class="center grey-text">Enter Resource Details to be deleted</h4>
 	<section class="container grey-text">
-		<form class="white" action="removeresource.php" method="POST">
+		<h4 class="center">Choose Department</h4>
+		<form class="white" action="choosedept.php" method="POST">
 
-			<p class="ftext" style="font-weight: bold">Choose Department:</p>
+  
+  			<p class="ftext">Choose Department:</p>
 			  <input type="radio" id="Computer Science & Engineering" name="Department" value="Computer Science & Engineering">
 			  <label for="Computer Science & Engineering">Computer Science & Engineering</label><br>
 
@@ -82,24 +72,15 @@
 					echo $em_dept;
 				?>
 			</div> 
-
-			<label style="font-weight: bold;" class="ftext">Resource Type:</label>
-			<input type="text" name="rtype">
-			<div class="right" id="errormessage">
-				<?php
-					echo $em_rtype;
-				?>
-			</div>
-
-			<div class="center" style="margin-top: 30px;">
+    		
+			<div class="center" style="margin-top: 25px">
 				<span class="ftext1">
-					<input type="submit" name="submit" value="CONFIRM & REMOVE RESOURCE" class="btn brand z-depth-0">
+					<input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
 				</span>
 			</div>
-
 		</form>
 	</section>
-	
+
 	<?php include('../../templates/footer.php') ?>
 
 </html>

@@ -24,7 +24,7 @@
 	<section class="container grey-text">
 		<form class="white">
 			<div class="center ftext">
-				<a href="./resource/resourcelist.php" class="btn brand z-depth-0">View Resource List</a> 
+				<a href="./resource/choosedept.php" class="btn brand z-depth-0">View Resource List</a> 
 			</div>
 		</form>
 	</section>
