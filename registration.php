@@ -4,11 +4,13 @@
 	// 	echo $_GET['email'];
 	// 	echo $_GET['password'];
 	// }
+
+	session_start();
+	$email = $_SESSION['ferryemail'];
 	
-	$name = $email = $password = $designation = "";
+	$name = $password = $designation = "";
 	
 	$em_name = "";
-	$em_email = "";
 	$em_password = "";
 	$em_designation = "";
 
@@ -28,15 +30,15 @@
 		}
 
 		//check email
-		if(empty($_POST['email'])){
-			$em_email = 'An Email is required <br/>';
-		} else {
-			$email = $_POST['email'];
-			//validating email
-			if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				$em_email = "Enter a valid email address";
-			}
-		}
+		// if(empty($_POST['email'])){
+		// 	$em_email = 'An Email is required <br/>';
+		// } else {
+		// 	$email = $_POST['email'];
+		// 	//validating email
+		// 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+		// 		$em_email = "Enter a valid email address";
+		// 	}
+		// }
 		//check password
 		if(empty($_POST['password'])){
 			$em_password = 'A password is required';
@@ -106,12 +108,12 @@
 			</div>
 
 			<label class="ftext">Your Email:</label>
-			<input type="text" name="email" value="<?php echo $email ?>">
-			<div class="right" id="errormessage">
+			<input type="text" name="email" value="<?php echo $email ?>" readonly>
+			<!-- <div class="right" id="errormessage">
 				<?php
 					echo $em_email;
 				?>
-			</div>
+			</div> -->
 
 			<label class="ftext">Your Password:</label>
 			<input type="password" name="password" id="myInput" value="<?php echo $password ?>">

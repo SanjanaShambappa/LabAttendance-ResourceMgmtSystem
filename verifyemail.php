@@ -4,6 +4,7 @@
 	// 	echo $_GET['email'];
 	// 	echo $_GET['password'];
 	// }
+	session_start();
 	
 	$email = "";
 	$designation = "";
@@ -62,8 +63,10 @@
 
 				if($registered == 1)
 					echo '<script>alert("User already registered under this email!")</script>';
-				else
+				else{
+					$_SESSION['ferryemail'] = $email;
 					header('Location: ./registration.php');
+				}
 			} else {
 				echo '<script>alert("Email not found in Record!")</script>';
 			}

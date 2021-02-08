@@ -43,8 +43,12 @@
 	}
 	</style>
 	
-	<?php include('../../templates/header.php') ?>
-
+	<?php include('../../templates/header1.php') ?>
+	<ul id="nav-mobile" class="right hide-on-small-and-down">
+					<li><a href="../manageresource.php" class="btn brand z-depth-0" style="margin-right: -45px;">Click to Return</a></li>
+				</ul>
+			</div>
+		</nav>
 	<section class="container grey-text">
 		<h4 class="center">Choose Department</h4>
 		<form class="white" action="choosedept.php" method="POST">

@@ -59,7 +59,8 @@
 		</nav>
 	<h4 class="center grey-text">Resource Usage Summary</h4>
 	<section class="white container grey-text" style="width: 585px">
-		<form class="white grey-text" action="resourceusage.php" method="POST" style="margin-left:-10px">
+		<form class="white grey-text" action="resourceusage.php" 
+					method="POST" style="margin-left:-10px">
             <?php
             	echo "<table>";
 			    echo '<tr style="font-weight: bold; font-size: 17px">';

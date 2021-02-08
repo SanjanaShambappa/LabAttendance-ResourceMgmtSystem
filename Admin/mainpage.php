@@ -37,7 +37,15 @@
 	<section class="container grey-text">
 		<form class="white">
 			<div class="center ftext">
-				<a href="./generatereport.php" class="btn brand z-depth-0">Generate Report</a>
+				<a href="./assignfaculty.php" class="btn brand z-depth-0">Assign Faculty</a>
+				<a href="./assignstudent.php" class="btn brand z-depth-0">Assign Student</a>
+			</div>
+		</form>
+	</section>
+	<section class="container grey-text">
+		<form class="white">
+			<div class="center ftext">
+				<a href="./choosebatch.php" class="btn brand z-depth-0">Generate Report</a>
 			</div>
 		</form>
 	</section>

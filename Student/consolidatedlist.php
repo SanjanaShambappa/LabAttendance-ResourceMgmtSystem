@@ -39,8 +39,9 @@
 		$Log[$i] = $i+1;
 		$m_arr[$i] = $m;
 		$n_arr[$i] = $n;
-		if($m != 0)
-			$p_arr[$i] = ($n/$m)*100;
+		if($m != 0){
+			$p_arr[$i] = number_format(floor($n*100)/$m,3, '.', '');
+		}
 		else
 			$p_arr[$i] = 0;
 		if($p_arr[$i] > 85)

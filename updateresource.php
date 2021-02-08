@@ -134,8 +134,12 @@
 	}
 	</style>
 	
-	<?php include('templates/header.php') ?>
-
+	<?php include('templates/header1.php') ?>
+	<ul id="nav-mobile" class="right hide-on-small-and-down">
+					<li><a href="./choosedepartment.php" class="btn brand z-depth-0" style="margin-right: -45px;">Click to Return</a></li>
+				</ul>
+			</div>
+		</nav>
 
 	<h4 class="center grey-text">Enter Resource Details</h4>
 
